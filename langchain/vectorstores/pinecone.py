@@ -155,7 +155,7 @@ class Pinecone(VectorStore):
         for res in results["matches"]:
             metadata = res["metadata"]
             text = metadata.pop(self._text_key)
-            docs.append(Document(page_content=text, metadata=metadata))
+            docs.append(Document(page_content=text, metadata=metadata, score=res["score"]))
         return docs
 
     @classmethod
